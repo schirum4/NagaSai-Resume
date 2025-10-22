@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swetha Naga Sai Chirumamilla — Full/MERN Stack Resume</title>
+  <style>
+    /* ---------- THEME TOKENS ---------- */
+    :root{
+      --bg:#1e1e1e;           /* dark */
+      --card:#232323;
+      --text:#d0d0d0;
+      --muted:#a9a9a9;
+      --heading:#ffffff;
+      --accent:#40c4ff;       /* cyan */
+      --accent-2:#9ae6b4;     /* green */
+      --link:#8ab4f8;
+      --border:#2b2b2b;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    .light{ /* optional light theme toggle via <body class="light"> */
+      --bg:#ffffff;
+      --card:#f7f9fc;
+      --text:#1a1a1a;
+      --muted:#525252;
+      --heading:#0f172a;
+      --accent:#007ACC;
+      --accent-2:#0ea5e9;
+      --link:#0b68ff;
+      --border:#e5e7eb;
+    }
+
+    /* ---------- BASE ---------- */
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:var(--sans); -webkit-font-smoothing:antialiased; line-height:1.45;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{ text-decoration:underline }
+
+    .page{ max-width:1000px; margin:32px auto; padding:24px; }
+    .resume{ display:grid; grid-template-columns: 320px 1fr; gap:24px; }
+
+    /* ---------- HEADER ---------- */
+    .header{ grid-column:1/-1; display:flex; align-items:flex-end; justify-content:space-between; gap:16px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+    .name{ font-size:36px; font-weight:800; color:var(--heading); }
+    .tagline{ color:var(--accent); font-weight:700; margin-top:6px; } 
+
+    /* ---------- SIDEBAR ---------- */
+    .sidebar{ background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; position:sticky; top:18px; height:fit-content; }
+    .section-title{ color:var(--heading); font-weight:800; letter-spacing:.3px; margin:18px 0 10px; font-size:14px; text-transform:uppercase; }
+    .kv{ display:grid; grid-template-columns: 20px 1fr; gap:10px; align-items:center; color:var(--text); font-size:14px; }
+    .kv + .kv{ margin-top:10px }
+
+    .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+    .tag{ background:transparent; border:1px solid var(--border); color:var(--text); padding:6px 10px; border-radius:999px; font-size:12px; font-family:var(--mono) }
+
+    /* ---------- MAIN ---------- */
+    .main{ display:flex; flex-direction:column; gap:18px; }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; }
+    .h2{ color:var(--heading); font-size:18px; font-weight:800; margin:0 0 10px; }
+    .item{ margin:14px 0 }
+    .role{ color:var(--heading); font-weight:700 }
+    .meta{ color:var(--muted); font-size:13px }
+    .bullets{ margin:8px 0 0 0; padding-left:18px }
+    .bullets li{ margin:4px 0 }
+
+    /* ---------- TIMELINE STYLING (for Projects) ---------- */
+    .timeline{ position:relative; margin-left:8px }
+    .timeline:before{ content:""; position:absolute; left:10px; top:6px; bottom:6px; width:2px; background:var(--border) }
+    .dot{ position:relative; padding-left:26px }
+    .dot:before{ content:""; position:absolute; left:6px; top:.45em; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(64,196,255,.15) }
+
+    /* ---------- PRINT ---------- */
+    @media print{
+      body{ background:#fffefe; }
+      .page{ margin:0; padding:0 }
+      .sidebar,.card{ -webkit-print-color-adjust:exact; print-color-adjust:exact }
+      .resume{ grid-template-columns: 300px 1fr; }
+      a{ color:inherit; text-decoration:none }
+      .link-print::after{ content:" (" attr(href) ")"; color:#666; font-size:12px }
+    }
+
+    /* ---------- SMALL SCREENS ---------- */
+    @media (max-width:860px){
+      .resume{ grid-template-columns: 1fr; }
+      .header{ flex-direction:column; align-items:flex-start }
+      .sidebar{ position:static }
+    }
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;}
+.page{max-width:1000px;margin:24px auto;padding:16px;}
+.toolbar{display:flex;gap:8px;justify-content:flex-end;margin-bottom:8px}
+.btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer;font-size:12px}
+.btn:hover{border-color:var(--accent)}
+
+.resume{display:grid;grid-template-columns:320px 1fr;gap:16px;}
+.header{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:8px;}
+.name{font-size:30px;font-weight:800;color:var(--heading);}
+.tagline{color:var(--accent);font-weight:700;margin-top:4px;}
+.meta-small{font-family:ui-monospace,Menlo,monospace;color:var(--muted);font-size:11px}
+.photo{width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);box-shadow:0 0 12px rgba(64,196,255,0.5)}
+
+.sidebar{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;}
+.section-title{color:var(--heading);font-weight:800;margin:14px 0 8px;font-size:13px;text-transform:uppercase;}
+.kv{font-size:13px;line-height:1.35}
+
+.main{display:flex;flex-direction:column;gap:12px;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;}
+.h2{color:var(--heading);font-size:16px;font-weight:800;margin:0 0 6px}
+.role{color:var(--heading);font-weight:700}
+.meta{color:var(--muted);font-size:12px}
+.bullets{margin:6px 0 0 0;padding-left:16px}
+.bullets li{margin:3px 0}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:transparent;border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:999px;font-size:11px}
+
+
+@media (max-width:860px){
+.resume{ grid-template-columns: 1fr }
+.header{ flex-direction:column; align-items:flex-start; gap:8px }
+}
+  </style>
+</head>
+
+
+<body>
+  <!-- Add class="light" on <body> to switch to the light theme tokens -->
+  <div class="page">
+    <header class="header">
+      <div>
+        <div class="name">Swetha Naga Sai Chirumamilla</div>
+        <div class="tagline">Full / MERN Stack Developer</div>
+      </div>
+      <!-- Add your image file name below -->
+      <img src="profile.jpg" alt="Photo" class="photo" />
+    </header>
+
+    <section class="resume">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="section-title">Contact</div>
+        <div class="number">📞+1-937-209-5982</div>
+        <div class="kv">✉️<a class="link-print" href="mailto:nagasaichirum4@gmail.com">nagasaichirum4@gmail.com</a></div>
+        <div class="kv">🐙<a class="link-print" href="https://github.com/schirum4">github.com/schirum4</a></div>
+        <div class="kv">in<a class="link-print" href="https://www.linkedin.com/in/nagasai-chirumamilla">/in/nagasai-chirumamilla</a></div>
+        <div class="kv">📍Kent,OH</div>
+
+        <div class="section-title">Summary</div>
+        <p style="margin:0 0 10px 0">Innovative <b>Full/MERN Stack Developer</b> building secure, scalable web apps with <b>React, Node.js/Express, Flask, MongoDB</b>. Strengths in <b>application security</b>, <b>real‑time</b> (Socket.IO), and <b>database design</b>.</p>
+
+        <div class="section-title">Skills</div>
+        <div class="tags">
+          <span class="tag">JavaScript/TypeScript</span>
+          <span class="tag">React / Redux</span>
+          <span class="tag">Node.js / Express</span>
+          <span class="tag">Flask</span>
+          <span class="tag">MongoDB / Atlas</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">Socket.IO</span>
+          <span class="tag">Docker</span>
+          <span class="tag">AWS</span>
+          <span class="tag">Git / CI/CD</span>
+        </div>
+
+        <div class="section-title">Certifications</div>
+        <ul style="margin:0; padding-left:18px">
+          <li>ServiceNow Certified Administrator</li>
+          <li>RPA Certified Professional</li>
+          <li>Coursera: Google Data Analytics; Cybersecurity Expert Master; Statistics with Python</li>
+        </ul>
+
+        <div class="section-title">Education</div>
+        <div class="item">
+          <div class="role">M.S., Computer Science</div>
+          <div class="meta">Kent State University · Jan 2024 — Present · Kent, OH</div>
+          <div class="meta">GPA 3.58/5.0 · Big Data, ML, DB Design, Digital Forensics, Info Security, Data Mining</div>
+        </div>
+        <div class="item">
+          <div class="role">B.Tech, Cybersecurity</div>
+          <div class="meta">KL University · 2018 — 2022 · Vijayawada, India</div>
+          <div class="meta">CGPA 8.05/10</div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <section class="card">
+          <h2 class="h2">Experience</h2>
+          <div class="item">
+            <div class="role">Programming Analyst — Cognizant Technology Solutions</div>
+            <div class="meta">Hyderabad, India · Jul 2022 — Jan 2024</div>
+            <ul class="bullets">
+              <li>Improved web app security by <b>25%</b> via vulnerability assessments and secure code reviews.</li>
+              <li>Boosted security posture by <b>20%</b> using <b>Checkmarx (SAST)</b> and <b>Acunetix (DAST)</b> with actionable remediation.</li>
+              <li>Embedded <b>secure coding practices</b> and compliance reporting across teams.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="h2">Selected Projects</h2>
+          <div class="timeline">
+            <div class="item dot">
+              <div class="role">Truest Ride (Realtime MERN/Flask)</div>
+              <div class="meta">React, Flask, MongoDB, Socket.IO · Jan 2025 — May 2025 · Kent, OH</div>
+              <ul class="bullets">
+                <li>Ride‑sharing platform with <b>passwordless auth</b>, live chat, and scalable ride management.</li>
+                <li>Schemas: <code>User</code>, <code>Ride</code>, <code>OTP</code>, <code>Chat</code>, <code>Message</code>; enforced relational consistency.</li>
+                <li>Engagement <b>+15%</b> via realtime APIs and UX refinements.</li>
+              </ul>
+            </div>
+            <div class="item dot">
+              <div class="role">Recipe Management System</div>
+              <div class="meta">React, Flask, MongoDB · Oct 2024 — Dec 2024</div>
+              <ul class="bullets">
+                <li>CRUD app to create, view, edit, and delete recipes with clean REST endpoints & validation.</li>
+              </ul>
+            </div>
+            <div class="item dot">
+              <div class="role">Password Manager (Encrypted)</div>
+              <div class="meta">Python, Flask · Apr 2024</div>
+              <ul class="bullets">
+                <li>Encrypted vault; secure retrieval flow and audit logging.</li>
+              </ul>
+            </div>
+            <div class="item dot">
+              <div class="role">Pest Classification using CNN</div>
+              <div class="meta">EfficientNetV2‑L, Grad‑CAM · Apr 2024 — May 2024</div>
+              <ul class="bullets">
+                <li>12‑class transfer learning; improved interpretability with <b>Grad‑CAM</b>.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="h2">Links</h2>
+          <div class="kv">🐙 <a class="link-print" href="https://github.com/schirum4">github.com/schirum4</a></div>
+          <div class="kv">in <a class="link-print" href="https://www.linkedin.com/in/nagasai-chirumamilla">linkedin.com/in/nagasai-chirumamilla</a></div>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById('date').textContent = new Date().toLocaleDateString();
+    // To switch to light theme, add class 'light' on <body> or run: document.body.classList.toggle('light')
+  </script>
+</body>
+</html>
